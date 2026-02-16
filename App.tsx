@@ -51,7 +51,7 @@ const App: React.FC = () => {
             <div className="relative w-80 h-96">
                <div className="absolute inset-0 bg-gradient-to-tr from-cyan-500 to-blue-600 rounded-[3rem] blur-[60px] opacity-40 animate-pulse" />
                
-               <GlassCard className="absolute top-0 left-0 w-full h-full border-t border-l border-white/40 flex flex-col justify-between p-8 animate-float transition-transform duration-700">
+               <GlassCard className="absolute top-0 left-0 w-full h-full border-t border-l border-white/40 flex flex-col justify-between p-8 hero-card animate-float transition-transform duration-700">
                   <div className="flex justify-between items-start">
                     <Activity className="w-10 h-10 text-cyan-400" />
                     <span className="text-4xl font-display font-bold">A+</span>
