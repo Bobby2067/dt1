@@ -57,7 +57,7 @@ export const Navigation: React.FC = () => {
 
       {/* Mobile Menu */}
       {isOpen && (
-        <div className="absolute top-full left-0 w-full mt-4 p-4 glass-card rounded-2xl md:hidden animate-in fade-in slide-in-from-top-5">
+        <div className="absolute top-full left-0 w-full mt-4 p-4 glass-card rounded-2xl md:hidden" style={{ animation: 'fadeSlideIn 0.3s ease-out' }}>
           <div className="flex flex-col gap-4">
             {['Method', 'Pricing', 'Fleet', 'Contact'].map((item) => (
               <a 
@@ -69,7 +69,7 @@ export const Navigation: React.FC = () => {
                 {item}
               </a>
             ))}
-             <button className="w-full py-3 rounded-xl bg-gradient-to-r from-liquid-blue to-liquid-cyan font-bold shadow-lg">
+             <button className="w-full py-3 rounded-xl font-bold shadow-lg" style={{ background: 'linear-gradient(to right, #0055FF, #00F0FF)' }}>
               Book Lesson
             </button>
           </div>

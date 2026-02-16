@@ -51,7 +51,7 @@ const App: React.FC = () => {
             <div className="relative w-80 h-96">
                <div className="absolute inset-0 bg-gradient-to-tr from-cyan-500 to-blue-600 rounded-[3rem] blur-[60px] opacity-40 animate-pulse" />
                
-               <GlassCard className="absolute top-0 left-0 w-full h-full border-t border-l border-white/40 flex flex-col justify-between p-8 transform rotate-y-12 rotate-z-6 animate-float hover:rotate-0 transition-transform duration-700">
+               <GlassCard className="absolute top-0 left-0 w-full h-full border-t border-l border-white/40 flex flex-col justify-between p-8 animate-float transition-transform duration-700">
                   <div className="flex justify-between items-start">
                     <Activity className="w-10 h-10 text-cyan-400" />
                     <span className="text-4xl font-display font-bold">A+</span>
@@ -206,7 +206,7 @@ const App: React.FC = () => {
                 placeholder="How can we help?"
                 className="w-full bg-white/5 border border-white/10 rounded-xl px-6 py-4 text-white placeholder-white/30 focus:outline-none focus:bg-white/10 focus:border-cyan-400/50 transition-all resize-none"
               />
-              <button className="w-full py-5 rounded-xl bg-gradient-to-r from-liquid-blue to-liquid-cyan text-white font-bold text-lg shadow-[0_0_30px_rgba(0,240,255,0.3)] hover:shadow-[0_0_50px_rgba(0,240,255,0.5)] transition-all transform hover:scale-[1.02]">
+              <button className="w-full py-5 rounded-xl text-white font-bold text-lg shadow-[0_0_30px_rgba(0,240,255,0.3)] hover:shadow-[0_0_50px_rgba(0,240,255,0.5)] transition-all transform hover:scale-[1.02]" style={{ background: 'linear-gradient(to right, #0055FF, #00F0FF)' }}>
                 Send Message
               </button>
             </form>
