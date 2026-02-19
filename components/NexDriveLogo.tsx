@@ -1,71 +1,31 @@
 import React from 'react';
 
 interface NexDriveLogoProps {
-  size?: 'sm' | 'md' | 'lg' | 'xl';
+  size?: 'sm' | 'md' | 'lg';
   showTagline?: boolean;
   className?: string;
 }
 
 export const NexDriveLogo: React.FC<NexDriveLogoProps> = ({ size = 'md', showTagline = false, className = '' }) => {
-  const sizes = {
-    sm: { width: 140, fontSize: 24, tagSize: 7, arrowScale: 0.7 },
-    md: { width: 200, fontSize: 34, tagSize: 9, arrowScale: 1 },
-    lg: { width: 280, fontSize: 48, tagSize: 12, arrowScale: 1.3 },
-    xl: { width: 400, fontSize: 68, tagSize: 16, arrowScale: 1.8 },
+  const config = {
+    sm: { h: 'text-xl', tag: 'text-[8px]', gap: 'gap-0.5', arrow: 'w-2.5 h-2.5' },
+    md: { h: 'text-3xl', tag: 'text-[10px]', gap: 'gap-1', arrow: 'w-3.5 h-3.5' },
+    lg: { h: 'text-5xl', tag: 'text-xs', gap: 'gap-1', arrow: 'w-5 h-5' },
   };
-
-  const s = sizes[size];
+  const c = config[size];
 
   return (
-    <div className={`inline-flex flex-col items-start ${className}`}>
-      <svg width={s.width} height={showTagline ? s.fontSize * 1.8 : s.fontSize * 1.2} viewBox={`0 0 ${s.width} ${showTagline ? s.fontSize * 1.8 : s.fontSize * 1.2}`}>
-        {/* NEX text */}
-        <text
-          x="0"
-          y={s.fontSize * 0.85}
-          fontFamily="Montserrat, sans-serif"
-          fontWeight="900"
-          fontStyle="italic"
-          fontSize={s.fontSize}
-          fill="#FFFFFF"
-          letterSpacing="-1"
-        >
-          NEX
-        </text>
-        {/* Green arrow on the X */}
-        <path
-          d={`M${s.fontSize * 2.05} ${s.fontSize * 0.35} l${8 * s.arrowScale} ${-8 * s.arrowScale} l${0} ${5 * s.arrowScale} l${6 * s.arrowScale} ${0} l${0} ${6 * s.arrowScale} l${-5 * s.arrowScale} ${0} l${0} ${6 * s.arrowScale} z`}
-          fill="#68C132"
-        />
-        {/* DRIVE text */}
-        <text
-          x={s.fontSize * 2.5}
-          y={s.fontSize * 0.85}
-          fontFamily="Montserrat, sans-serif"
-          fontWeight="900"
-          fontStyle="italic"
-          fontSize={s.fontSize}
-          fill="#0066CC"
-          letterSpacing="-1"
-        >
-          DRIVE
-        </text>
-        {/* ACADEMY tagline */}
-        {showTagline && (
-          <text
-            x={s.width * 0.5}
-            y={s.fontSize * 1.5}
-            fontFamily="Roboto, sans-serif"
-            fontWeight="400"
-            fontSize={s.tagSize}
-            fill="rgba(255,255,255,0.5)"
-            textAnchor="middle"
-            letterSpacing="4"
-          >
-            ACADEMY
-          </text>
-        )}
-      </svg>
+    <div className={`inline-flex flex-col ${className}`}>
+      <div className={`flex items-center ${c.gap}`}>
+        <span className={`font-display font-black italic ${c.h} text-white leading-none`}>NEX</span>
+        <svg viewBox="0 0 20 20" className={`${c.arrow} -ml-0.5 -mt-1`}>
+          <path d="M4 16 L16 4 L16 10 L20 10 L20 16 L14 16 L14 20 Z" fill="#68C132" transform="scale(0.85) translate(2,1)" />
+        </svg>
+        <span className={`font-display font-black italic ${c.h} leading-none`} style={{ color: '#0066CC' }}>DRIVE</span>
+      </div>
+      {showTagline && (
+        <span className={`${c.tag} tracking-[0.3em] text-white/40 font-medium uppercase mt-1`}>Academy</span>
+      )}
     </div>
   );
 };

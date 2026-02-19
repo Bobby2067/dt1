@@ -12,37 +12,29 @@ export const Navigation: React.FC = () => {
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
-  const navClasses = scrolled
-    ? 'py-3 px-8 w-[90%] md:w-[70%] bg-glass-100 backdrop-blur-md border border-glass-border shadow-2xl top-4 rounded-full'
-    : 'py-6 px-8 w-full top-0 bg-transparent border-transparent';
-
   return (
-    <nav className={`fixed left-1/2 -translate-x-1/2 z-50 transition-all duration-500 ease-out ${navClasses}`}>
-      <div className="flex justify-between items-center">
+    <nav className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${scrolled ? 'bg-nex-navy/95 backdrop-blur-sm border-b border-white/5 py-3' : 'bg-transparent py-5'}`}>
+      <div className="max-w-7xl mx-auto px-6 flex justify-between items-center">
 
-        {/* Logo */}
-        <a href="#" className="group cursor-pointer">
+        <a href="#" className="cursor-pointer">
           <NexDriveLogo size="sm" />
         </a>
 
-        {/* Desktop Links */}
         <div className="hidden md:flex items-center gap-8">
           {['Method', 'Courses', 'Fleet', 'Pricing', 'Contact'].map((item) => (
             <a
               key={item}
               href={`#${item.toLowerCase()}`}
-              className="text-sm font-medium text-white/70 hover:text-white transition-colors relative group"
+              className="text-sm text-white/60 hover:text-white transition-colors"
             >
               {item}
-              <span className="absolute -bottom-1 left-0 w-0 h-[2px] bg-nex-green transition-all duration-300 group-hover:w-full" />
             </a>
           ))}
-          <button className="btn-primary px-6 py-2 rounded-full text-sm font-semibold text-white">
+          <button className="btn-primary px-5 py-2 rounded-lg text-sm font-semibold text-white">
             Book Lesson
           </button>
         </div>
 
-        {/* Mobile Toggle */}
         <button
           className="md:hidden text-white p-2"
           onClick={() => setIsOpen(!isOpen)}
@@ -51,21 +43,20 @@ export const Navigation: React.FC = () => {
         </button>
       </div>
 
-      {/* Mobile Menu */}
       {isOpen && (
-        <div className="absolute top-full left-0 w-full mt-4 p-4 glass-card rounded-2xl md:hidden" style={{ animation: 'fadeSlideIn 0.3s ease-out' }}>
-          <div className="flex flex-col gap-4">
+        <div className="md:hidden bg-nex-navy/98 border-t border-white/5 px-6 py-4" style={{ animation: 'fadeSlideIn 0.2s ease-out' }}>
+          <div className="flex flex-col gap-1">
             {['Method', 'Courses', 'Fleet', 'Pricing', 'Contact'].map((item) => (
               <a
                 key={item}
                 href={`#${item.toLowerCase()}`}
-                className="p-3 hover:bg-white/5 rounded-xl transition-colors"
+                className="py-3 text-white/60 hover:text-white transition-colors text-sm"
                 onClick={() => setIsOpen(false)}
               >
                 {item}
               </a>
             ))}
-            <button className="btn-primary w-full py-3 rounded-xl font-bold text-white">
+            <button className="btn-primary w-full py-3 rounded-lg font-bold text-white text-sm mt-2">
               Book Lesson
             </button>
           </div>

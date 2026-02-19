@@ -24,27 +24,7 @@
                 navy: '#0B1325',
                 grey: '#333333',
               },
-              glass: {
-                100: 'rgba(255, 255, 255, 0.08)',
-                200: 'rgba(255, 255, 255, 0.15)',
-                300: 'rgba(255, 255, 255, 0.25)',
-                border: 'rgba(255, 255, 255, 0.12)',
-                highlight: 'rgba(255, 255, 255, 0.4)',
-              },
             },
-            animation: {
-              'blob-1': 'blob-bounce 20s infinite ease',
-              'blob-2': 'blob-bounce 25s infinite ease reverse',
-              'blob-3': 'blob-bounce 30s infinite ease',
-            },
-            keyframes: {
-              'blob-bounce': {
-                '0%, 100%': { transform: 'translate(0, 0) scale(1)' },
-                '25%': { transform: 'translate(50px, -50px) scale(1.1)' },
-                '50%': { transform: 'translate(-20px, 20px) scale(0.9)' },
-                '75%': { transform: 'translate(-40px, -20px) scale(1.05)' },
-              },
-            }
           }
         }
       }
@@ -57,118 +37,71 @@
         overflow-x: hidden;
       }
 
-      .liquid-container {
-        filter: url('#goo');
-      }
-
-      .noise-overlay {
-        position: fixed;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
-        pointer-events: none;
-        z-index: 9999;
-        opacity: 0.03;
-        background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
-      }
-
-      .glass-card {
-        background: linear-gradient(135deg, rgba(255, 255, 255, 0.04), rgba(255, 255, 255, 0.01));
-        backdrop-filter: blur(20px);
-        -webkit-backdrop-filter: blur(20px);
+      /* Clean card style */
+      .card {
+        background: rgba(255, 255, 255, 0.04);
         border: 1px solid rgba(255, 255, 255, 0.08);
-        border-top: 1px solid rgba(255, 255, 255, 0.15);
-        box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.4);
+        border-radius: 16px;
+        transition: all 0.3s ease;
+      }
+      .card:hover {
+        background: rgba(255, 255, 255, 0.07);
+        border-color: rgba(255, 255, 255, 0.15);
       }
 
+      /* Brand gradient text */
       .text-brand-gradient {
         background: linear-gradient(135deg, #0066CC, #68C132);
         -webkit-background-clip: text;
         -webkit-text-fill-color: transparent;
       }
 
-      .text-shimmer {
-        background: linear-gradient(90deg, #0066CC, #68C132, #0066CC);
-        background-size: 200% auto;
-        -webkit-background-clip: text;
-        -webkit-text-fill-color: transparent;
-        animation: textShimmer 4s linear infinite;
-      }
-
-      @keyframes textShimmer {
-        to { background-position: 200% center; }
-      }
-
+      /* Buttons */
       .btn-primary {
-        background: linear-gradient(135deg, #0066CC, #0077EE);
+        background: #0066CC;
         transition: all 0.3s ease;
       }
       .btn-primary:hover {
-        background: linear-gradient(135deg, #0077EE, #0088FF);
-        box-shadow: 0 0 30px rgba(0, 102, 204, 0.4);
-        transform: translateY(-2px);
+        background: #0077EE;
+        box-shadow: 0 4px 20px rgba(0, 102, 204, 0.35);
+        transform: translateY(-1px);
       }
-
       .btn-green {
-        background: linear-gradient(135deg, #68C132, #7BD142);
+        background: #68C132;
         transition: all 0.3s ease;
       }
       .btn-green:hover {
-        box-shadow: 0 0 30px rgba(104, 193, 50, 0.4);
-        transform: translateY(-2px);
+        background: #76D13E;
+        box-shadow: 0 4px 20px rgba(104, 193, 50, 0.35);
+        transform: translateY(-1px);
+      }
+      .btn-outline {
+        border: 1.5px solid rgba(255, 255, 255, 0.2);
+        transition: all 0.3s ease;
+      }
+      .btn-outline:hover {
+        border-color: rgba(255, 255, 255, 0.4);
+        background: rgba(255, 255, 255, 0.05);
       }
 
-      @keyframes float {
-        0%, 100% { transform: translateY(0px) rotateY(8deg) rotateZ(4deg); }
-        50% { transform: translateY(-20px) rotateY(8deg) rotateZ(4deg); }
-      }
-      @keyframes float-delayed {
-        0%, 100% { transform: translateY(0px); }
-        50% { transform: translateY(-15px); }
-      }
-      .animate-float {
-        animation: float 6s ease-in-out infinite;
-      }
-      .hero-card:hover {
-        animation: none;
-        transform: translateY(-10px) rotateY(0deg) rotateZ(0deg);
-      }
-      .animate-float-delayed {
-        animation: float-delayed 5s ease-in-out 1s infinite;
-      }
-
-      .perspective-1000 {
-        perspective: 1000px;
-      }
-      .preserve-3d {
-        transform-style: preserve-3d;
-      }
-
-      @keyframes fadeSlideIn {
-        from { opacity: 0; transform: translateY(-10px); }
-        to { opacity: 1; transform: translateY(0); }
-      }
-
-      /* Green accent line on cards */
-      .accent-card {
+      /* Green left accent */
+      .accent-left {
         border-left: 3px solid #68C132;
       }
 
-      ::-webkit-scrollbar { width: 0px; background: transparent; }
+      /* Mobile menu animation */
+      @keyframes fadeSlideIn {
+        from { opacity: 0; transform: translateY(-8px); }
+        to { opacity: 1; transform: translateY(0); }
+      }
+
+      /* Smooth scrollbar */
+      ::-webkit-scrollbar { width: 6px; }
+      ::-webkit-scrollbar-track { background: transparent; }
+      ::-webkit-scrollbar-thumb { background: rgba(255,255,255,0.1); border-radius: 3px; }
     </style>
   </head>
   <body>
-    <svg style="visibility: hidden; position: absolute;" width="0" height="0">
-      <defs>
-        <filter id="goo">
-          <feGaussianBlur in="SourceGraphic" stdDeviation="40" result="blur" />
-          <feColorMatrix in="blur" mode="matrix" values="1 0 0 0 0  0 1 0 0 0  0 0 1 0 0  0 0 0 19 -9" result="goo" />
-          <feComposite in="SourceGraphic" in2="goo" operator="atop"/>
-        </filter>
-      </defs>
-    </svg>
-    <div class="noise-overlay"></div>
     <div id="root"></div>
     <script type="module" src="./index.tsx"></script>
   </body>
