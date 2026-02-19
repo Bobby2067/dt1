@@ -5,7 +5,7 @@ export const ScrollProgress: React.FC = () => {
 
   useEffect(() => {
     let rafId: number;
-    
+
     const handleScroll = () => {
       const totalHeight = document.documentElement.scrollHeight - window.innerHeight;
       const progress = totalHeight > 0 ? (window.scrollY / totalHeight) * 100 : 0;
@@ -18,9 +18,8 @@ export const ScrollProgress: React.FC = () => {
     };
 
     window.addEventListener('scroll', onScroll);
-    // Initial calculation
     handleScroll();
-    
+
     return () => {
       window.removeEventListener('scroll', onScroll);
       cancelAnimationFrame(rafId);
@@ -28,9 +27,13 @@ export const ScrollProgress: React.FC = () => {
   }, []);
 
   return (
-    <div 
-      className="fixed top-0 left-0 h-[3px] bg-gradient-to-r from-cyan-400 via-blue-500 to-purple-500 z-[100] transition-all duration-150 ease-linear shadow-[0_0_10px_rgba(6,182,212,0.5)]" 
-      style={{ width: `${width}%` }} 
+    <div
+      className="fixed top-0 left-0 h-[3px] z-[100] transition-all duration-150 ease-linear"
+      style={{
+        width: `${width}%`,
+        background: 'linear-gradient(to right, #0066CC, #68C132)',
+        boxShadow: '0 0 10px rgba(0, 102, 204, 0.5)'
+      }}
     />
   );
 };

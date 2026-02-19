@@ -3,40 +3,39 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>DrivingForce | Liquid Motion</title>
+    <title>NexDrive Academy | Real Skills. Real Confidence. Real Drivers.</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;700;800&family=Space+Grotesk:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-    
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,400;0,600;0,700;0,800;0,900;1,700;1,800;1,900&family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
+
     <script>
       tailwind.config = {
         theme: {
           extend: {
             fontFamily: {
-              sans: ['Outfit', 'sans-serif'],
-              display: ['Space Grotesk', 'sans-serif'],
+              sans: ['Roboto', 'sans-serif'],
+              display: ['Montserrat', 'sans-serif'],
             },
             colors: {
-              glass: {
-                100: 'rgba(255, 255, 255, 0.1)',
-                200: 'rgba(255, 255, 255, 0.2)',
-                300: 'rgba(255, 255, 255, 0.3)',
-                border: 'rgba(255, 255, 255, 0.15)',
-                highlight: 'rgba(255, 255, 255, 0.5)',
+              nex: {
+                blue: '#0066CC',
+                green: '#68C132',
+                navy: '#0B1325',
+                grey: '#333333',
               },
-              liquid: {
-                cyan: '#00F0FF',
-                blue: '#0055FF',
-                purple: '#7000FF',
-                dark: '#020205'
-              }
+              glass: {
+                100: 'rgba(255, 255, 255, 0.08)',
+                200: 'rgba(255, 255, 255, 0.15)',
+                300: 'rgba(255, 255, 255, 0.25)',
+                border: 'rgba(255, 255, 255, 0.12)',
+                highlight: 'rgba(255, 255, 255, 0.4)',
+              },
             },
             animation: {
               'blob-1': 'blob-bounce 20s infinite ease',
               'blob-2': 'blob-bounce 25s infinite ease reverse',
               'blob-3': 'blob-bounce 30s infinite ease',
-              'tilt': 'tilt 10s infinite linear',
             },
             keyframes: {
               'blob-bounce': {
@@ -45,11 +44,6 @@
                 '50%': { transform: 'translate(-20px, 20px) scale(0.9)' },
                 '75%': { transform: 'translate(-40px, -20px) scale(1.05)' },
               },
-              'tilt': {
-                '0%, 50%, 100%': { transform: 'rotate(0deg)' },
-                '25%': { transform: 'rotate(1deg)' },
-                '75%': { transform: 'rotate(-1deg)' },
-              }
             }
           }
         }
@@ -57,19 +51,16 @@
     </script>
     <style>
       body {
-        background-color: #020205;
+        background-color: #0B1325;
         color: white;
         margin: 0;
         overflow-x: hidden;
       }
 
-      /* LIQUID FILTER */
-      /* This makes intersecting blurred divs merge together like oil */
       .liquid-container {
         filter: url('#goo');
       }
 
-      /* NOISE TEXTURE */
       .noise-overlay {
         position: fixed;
         top: 0;
@@ -78,36 +69,59 @@
         height: 100%;
         pointer-events: none;
         z-index: 9999;
-        opacity: 0.05;
+        opacity: 0.03;
         background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
       }
 
-      /* GLASS UTILITIES */
       .glass-card {
-        background: linear-gradient(135deg, rgba(255, 255, 255, 0.03), rgba(255, 255, 255, 0.01));
+        background: linear-gradient(135deg, rgba(255, 255, 255, 0.04), rgba(255, 255, 255, 0.01));
         backdrop-filter: blur(20px);
         -webkit-backdrop-filter: blur(20px);
         border: 1px solid rgba(255, 255, 255, 0.08);
-        border-top: 1px solid rgba(255, 255, 255, 0.2);
-        box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
+        border-top: 1px solid rgba(255, 255, 255, 0.15);
+        box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.4);
       }
 
-      .text-liquid {
-        background: linear-gradient(to right, #00F0FF, #0055FF, #fff);
+      .text-brand-gradient {
+        background: linear-gradient(135deg, #0066CC, #68C132);
         -webkit-background-clip: text;
         -webkit-text-fill-color: transparent;
+      }
+
+      .text-shimmer {
+        background: linear-gradient(90deg, #0066CC, #68C132, #0066CC);
         background-size: 200% auto;
-        animation: textShimmer 5s linear infinite;
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        animation: textShimmer 4s linear infinite;
       }
 
       @keyframes textShimmer {
         to { background-position: 200% center; }
       }
-      
-      /* Float animations for hero cards */
+
+      .btn-primary {
+        background: linear-gradient(135deg, #0066CC, #0077EE);
+        transition: all 0.3s ease;
+      }
+      .btn-primary:hover {
+        background: linear-gradient(135deg, #0077EE, #0088FF);
+        box-shadow: 0 0 30px rgba(0, 102, 204, 0.4);
+        transform: translateY(-2px);
+      }
+
+      .btn-green {
+        background: linear-gradient(135deg, #68C132, #7BD142);
+        transition: all 0.3s ease;
+      }
+      .btn-green:hover {
+        box-shadow: 0 0 30px rgba(104, 193, 50, 0.4);
+        transform: translateY(-2px);
+      }
+
       @keyframes float {
-        0%, 100% { transform: translateY(0px) rotateY(12deg) rotateZ(6deg); }
-        50% { transform: translateY(-20px) rotateY(12deg) rotateZ(6deg); }
+        0%, 100% { transform: translateY(0px) rotateY(8deg) rotateZ(4deg); }
+        50% { transform: translateY(-20px) rotateY(8deg) rotateZ(4deg); }
       }
       @keyframes float-delayed {
         0%, 100% { transform: translateY(0px); }
@@ -124,7 +138,6 @@
         animation: float-delayed 5s ease-in-out 1s infinite;
       }
 
-      /* 3D transform utilities */
       .perspective-1000 {
         perspective: 1000px;
       }
@@ -132,24 +145,20 @@
         transform-style: preserve-3d;
       }
 
-      /* Mobile menu slide-in animation */
       @keyframes fadeSlideIn {
-        from {
-          opacity: 0;
-          transform: translateY(-10px);
-        }
-        to {
-          opacity: 1;
-          transform: translateY(0);
-        }
+        from { opacity: 0; transform: translateY(-10px); }
+        to { opacity: 1; transform: translateY(0); }
       }
 
-      /* Hiding scrollbar for cleaner look */
+      /* Green accent line on cards */
+      .accent-card {
+        border-left: 3px solid #68C132;
+      }
+
       ::-webkit-scrollbar { width: 0px; background: transparent; }
     </style>
   </head>
   <body>
-    <!-- SVG Filters for Liquid Physics -->
     <svg style="visibility: hidden; position: absolute;" width="0" height="0">
       <defs>
         <filter id="goo">
